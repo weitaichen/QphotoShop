@@ -12,7 +12,7 @@ export default async function handler(req, res) {
 
   try {
     const response = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-preview-image-generation:generateContent?key=${key}`,
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-image:generateContent?key=${key}`,
       {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -27,7 +27,7 @@ export default async function handler(req, res) {
               { inline_data: { mime_type: 'image/jpeg', data: image_b64 } }
             ]
           }],
-          generationConfig: { responseModalities: ['IMAGE'] }
+          generationConfig: { responseModalities: ['TEXT', 'IMAGE'] }
         })
       }
     )
