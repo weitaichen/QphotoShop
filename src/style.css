@@ -1,0 +1,306 @@
+:root {
+  --bg: #fff7fb;
+  --card: #ffffff;
+  --ink: #3a2e3a;
+  --muted: #9b8a98;
+  --pink: #9d2235;
+  --pink-d: #7a1a2a;
+  --pur: #b8860b;
+  --line: #f0e3ec;
+  --shadow: 0 8px 24px rgba(157,34,53,.18);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  margin: 0;
+  font-family: "PingFang TC", "Microsoft JhengHei", system-ui, sans-serif;
+  background: linear-gradient(160deg, #fdf6f3, #fbeeec);
+  color: var(--ink);
+  min-height: 100vh;
+}
+
+header {
+  text-align: center;
+  padding: 22px 16px 6px;
+}
+header h1 {
+  margin: 0;
+  font-size: 22px;
+  letter-spacing: 1px;
+}
+header p {
+  margin: 6px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.wrap {
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+/* ── Card ── */
+.card {
+  background: var(--card);
+  border-radius: 20px;
+  box-shadow: var(--shadow);
+  padding: 18px;
+  margin-bottom: 16px;
+  border: 1px solid var(--line);
+}
+.card h2 {
+  font-size: 15px;
+  margin: 0 0 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ── Step badge ── */
+.step {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--pink);
+  color: #fff;
+  font-size: 13px;
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+}
+
+/* ── Buttons ── */
+.btn {
+  appearance: none;
+  border: none;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 600;
+  font-family: inherit;
+  padding: 12px 18px;
+  border-radius: 14px;
+  color: #fff;
+  background: var(--pink);
+  box-shadow: 0 4px 12px rgba(157,34,53,.3);
+  transition: transform .08s, filter .15s;
+}
+.btn:active { transform: scale(.96); }
+.btn:disabled { filter: grayscale(.6); opacity: .5; cursor: not-allowed; }
+
+.btn.sec {
+  background: #fff;
+  color: var(--pink-d);
+  border: 2px solid var(--pink);
+  box-shadow: none;
+}
+.btn.pur {
+  background: var(--pur);
+  box-shadow: 0 4px 12px rgba(184,134,11,.3);
+}
+
+.btn-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.btn-row .btn {
+  flex: 1;
+  min-width: 120px;
+}
+
+/* ── Crop stage ── */
+.stage-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background: #faf2f8;
+  border-radius: 16px;
+  overflow: hidden;
+  touch-action: none;
+  border: 1px dashed #e9cfe0;
+}
+.stage-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.crop-box {
+  position: absolute;
+  border: 2px solid #fff;
+  box-shadow: 0 0 0 9999px rgba(0,0,0,.4);
+  cursor: move;
+  touch-action: none;
+}
+.crop-box.circle { border-radius: 50%; }
+.crop-handle {
+  position: absolute;
+  right: -9px;
+  bottom: -9px;
+  width: 22px;
+  height: 22px;
+  background: #fff;
+  border: 2px solid var(--pink);
+  border-radius: 50%;
+  cursor: nwse-resize;
+}
+
+/* ── Empty placeholder ── */
+.empty {
+  height: 200px;
+  display: grid;
+  place-items: center;
+  color: var(--muted);
+  border: 2px dashed #ecd6e6;
+  border-radius: 16px;
+  text-align: center;
+  font-size: 14px;
+  padding: 16px;
+}
+
+/* ── Chips ── */
+.chips {
+  display: flex;
+  gap: 10px;
+  margin: 14px 0 4px;
+}
+.chip {
+  flex: 1;
+  text-align: center;
+  padding: 12px 6px;
+  border-radius: 14px;
+  border: 2px solid var(--line);
+  background: #fff;
+  cursor: pointer;
+  font-size: 14px;
+  font-family: inherit;
+  transition: .15s;
+  appearance: none;
+}
+.chip .ic {
+  font-size: 22px;
+  display: block;
+  margin-bottom: 4px;
+}
+.chip.on {
+  border-color: var(--pink);
+  background: #fff0f7;
+  color: var(--pink-d);
+  font-weight: 700;
+}
+
+/* ── Hint ── */
+.hint {
+  color: var(--muted);
+  font-size: 12px;
+  margin: 8px 0 0;
+  text-align: center;
+}
+
+/* ── Frame preview ── */
+.frame-preview-wrap {
+  margin-top: 12px;
+  text-align: center;
+}
+.frame-preview-wrap img {
+  max-width: 100%;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+}
+
+/* ── Name input ── */
+.name-input {
+  width: 100%;
+  padding: 11px 14px;
+  border: 2px solid var(--line);
+  border-radius: 14px;
+  font-size: 15px;
+  font-family: inherit;
+  outline: none;
+  margin-bottom: 10px;
+  color: var(--ink);
+}
+.name-input:focus { border-color: var(--pink); }
+
+/* ── Sticker grid ── */
+.sticker-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-top: 14px;
+}
+@media (max-width: 480px) {
+  .sticker-grid { grid-template-columns: repeat(2, 1fr); }
+}
+.sticker {
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #faf2f8;
+  aspect-ratio: 1 / 1;
+  border: 1px solid var(--line);
+  display: grid;
+  place-items: center;
+}
+.sticker canvas,
+.sticker img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+.sticker .dl {
+  position: absolute;
+  right: 6px;
+  bottom: 6px;
+  background: rgba(255,255,255,.92);
+  border-radius: 10px;
+  padding: 5px 8px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--pink-d);
+  cursor: pointer;
+  border: none;
+  font-family: inherit;
+}
+
+/* ── Spinner ── */
+.spin {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border: 2px solid #fff;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: sp .7s linear infinite;
+  vertical-align: -2px;
+  margin-right: 6px;
+}
+@keyframes sp { to { transform: rotate(360deg); } }
+
+/* ── Video ── */
+.camera-video {
+  width: 100%;
+  border-radius: 14px;
+  margin-top: 12px;
+  display: block;
+  background: #000;
+}
+
+/* ── Footer ── */
+footer {
+  text-align: center;
+  color: var(--muted);
+  font-size: 12px;
+  padding: 8px 0 30px;
+}
+
+/* ── Helpers ── */
+.hidden { display: none !important; }
+.mt-8  { margin-top: 8px; }
+.mt-12 { margin-top: 12px; }
